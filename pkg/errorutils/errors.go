@@ -1,7 +1,6 @@
 package errorutils
 
 import (
-	"net/http"
 	"fmt"
 )
 
@@ -12,13 +11,6 @@ type JSONError struct {
 
 func (e *JSONError) Error() string {
 	return e.Message
-}
-
-func NewHTTPRequestError(msg string, res *http.Response) error {
-	return &JSONError{
-		Message: msg,
-		Code:    res.StatusCode,
-	}
 }
 
 // An StatusError reports an unsuccessful exit by a command.
